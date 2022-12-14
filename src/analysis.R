@@ -1,4 +1,4 @@
-source("preprocessing.R")
+source("src/preprocessing.R")
 install.packages("stargazer")
 library(stargazer)
 # create a model for the blockchain
@@ -17,6 +17,6 @@ mentalHealth <- lm(WorkExp ~ MentalHealth, data = df_split)
 summary(mentalHealth)
 stargazer(mentalHealth, out="gender.tex")
 
-work_exp <- lm(WorkExp ~ Factor(LearnCode), data = df_split)
+work_exp <- lm(WorkExp ~ factor(LearnCode), data = df_split)
 summary(work_exp)
 stargazer(work_exp)
