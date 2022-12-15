@@ -44,3 +44,5 @@ df_split <- df_split %>% dplyr::select(ResponseId, LearnCode, TimeAnswering,
               TimeSearching, MentalHealth, Age, Blockchain,
               Gender, WorkExp, SOPartFreq, SOVisitFreq,
               LanguageHaveWorkedWith, MainBranch, WorkExpBin)
+save(df_whole, file = "src/surveyShow/df_whole")
+save(df_split, file = "src/surveyShow/df_split")

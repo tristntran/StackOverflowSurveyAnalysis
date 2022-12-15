@@ -92,7 +92,7 @@ shinyUI(fluidPage(
                                     "I used to be a developer by profession, but no longer am")
           ),
           sliderInput("workExpInput", label = h3("Years Work Experience:"), min = 0, 
-                      max = 50, value = c(5, 10))
+                      max = 50, value = c(0, 50))
         ),
 
         # Show a plot of the generated distribution
@@ -111,11 +111,18 @@ shinyUI(fluidPage(
                         "General Statistics",
                         h2("Do people who know more languages want to know more?"),
                         plotlyOutput("nLangsPlot"),
-                        plotlyOutput("usagePlot")
+                        h4("The more languages people have worked with, the more they tend to want to learn."),
+                        plotlyOutput("usagePlot"),
+                        h4("Stack overflow visit frequency colored by work experience"),
+                        h2("Distributions of Age and Work Experience below"),
+                        h4("select all on the slider to see survey representative results."),
+                        plotlyOutput("WorkExpPlot"),
+                        plotlyOutput("age_plot")
                         ),
                       tabPanel(
                         "Block Chain",
                         h2("How do programmers feel about blockchain"),
+                        h4("In general we see a negative correlation between age and work experience and block chain favorability. This is probably explained by some aversion to new technology or indifference towards technologies outside of scope"),
                         h3("Favorability by Age Group"),
                         plotlyOutput("blockChainAgePlot"),
                         h3("Favorability by Branch of Programming"),

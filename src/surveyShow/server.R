@@ -13,6 +13,8 @@ library(ggplot2)
 library(plotly)
 library(tidyr)
 # Define server logic required to draw a histogram
+load("df_split")
+load("df_whole")
 shinyServer(function(input, output) {
   d_split <- reactive({
     if (!input$noneHealthInput)
@@ -49,6 +51,7 @@ shinyServer(function(input, output) {
   output$usagePlot <- renderPlotly({
     ggplotly(d_whole() %>% ggplot(aes(y = SOVisitFreq,
                                       fill = WorkExpBin)) + geom_bar())})
+  # TODO add simple distribution filter for age and work exp
   # blockchain favorability graph
   # more!!!
   output$blockChainAgePlot <- renderPlotly({
@@ -70,7 +73,17 @@ shinyServer(function(input, output) {
   output$nLangsPlot <- renderPlotly({
     ggplotly(d_whole() %>% ggplot() +
       aes(x=nLanguageHaveWorkedWith, y = nLanguagesWant) +
-        geom_count())})
+        geom_count() + geom_abline(slope=1, intercept=0, colour="blue"))})
+  output$age_plot <- renderPlotly({
+    ggplotly(
+      d_whole() %>% ggplot() + aes(x=Age, fill=WorkExpBin) + geom_bar()
+    )
+  })
+  output$WorkExpPlot <- renderPlotly({
+    ggplotly(
+      d_whole() %>% ggplot() + aes(x=WorkExp, fill=Age) + geom_histogram()
+    )
+  })
   # mental Health
   # more graphs here
   output$healthPlotAge <- renderPlotly({

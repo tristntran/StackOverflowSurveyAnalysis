@@ -1,0 +1,13 @@
+name: surveyshow
+title:
+username:
+account: tristnt
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 7888349
+bundleId: 6637224
+url: https://tristnt.shinyapps.io/surveyshow/
+when: 1671043452.60198
+lastSyncTime: 1671043452.60199
+asMultiple: FALSE
+asStatic: FALSE
